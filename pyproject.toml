@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sqlviz"
+version = "0.0.1"
+description = "A Python library for SQL query visualization with interactive charts using Plotly"
+authors = [
+    {name = "Hill Patel, Raktim Kalita, Sai Krishna", email = "stiflerxd.ai@cudabit.live, raktimkalita@cudabit.live, eegasaikrishna@cudabit.live"}
+]
+readme = "README.md"
+license = {text = "MIT"}
+keywords = ["sql", "visualization", "plotly", "data", "database"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Database",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Scientific/Engineering :: Visualization"
+]
+requires-python = ">=3.8"
+dependencies = [
+    "pandas",
+    "sqlalchemy",
+    "plotly"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "isort",
+    "mypy"
+]
+
+[tool.setuptools.packages.find]
+where = ["sqlviz"]
