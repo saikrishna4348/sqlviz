@@ -27,18 +27,23 @@ classifiers = [
 ]
 requires-python = ">=3.8"
 dependencies = [
-    "pandas",
-    "sqlalchemy",
-    "plotly"
+    "pandas>=1.0",
+    "sqlalchemy>=1.4",
+    "plotly>=5.0"
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest",
-    "black",
-    "isort",
-    "mypy"
+    "pytest>=8.0",
+    "black>=24.3",
+    "isort>=5.10",
+    "mypy>=1.0"
 ]
+
+[project.urls]
+"Homepage" = "https://github.com/yourusername/sqlviz"
+"Repository" = "https://github.com/yourusername/sqlviz"
+"Bug Tracker" = "https://github.com/yourusername/sqlviz/issues"
 
 [tool.setuptools.packages.find]
 where = ["sqlviz"]
