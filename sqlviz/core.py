@@ -1,7 +1,7 @@
-# sqlviz/core.py
 import pandas as pd
 import plotly.express as px
 from sqlalchemy import create_engine
+from typing import Optional  # Added for proper typing support
 
 
 class SQLViz:
@@ -16,7 +16,7 @@ class SQLViz:
         sql: str,
         chart_type: str = "bar",
         show: bool = True,
-        output: str = None,
+        output: Optional[str] = None,  # Updated typing here
         chart_backend: str = "plotly",
         **kwargs,
     ):
