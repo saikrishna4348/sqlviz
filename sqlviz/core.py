@@ -1,7 +1,8 @@
+from typing import Optional  # Added for proper typing support
+
 import pandas as pd
 import plotly.express as px
 from sqlalchemy import create_engine
-from typing import Optional  # Added for proper typing support
 
 
 class SQLViz:
