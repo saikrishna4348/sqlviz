@@ -32,6 +32,9 @@ dependencies = [
     "plotly>=5.0"
 ]
 
+[tool.mypy]
+ignore_missing_imports = true
+
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
