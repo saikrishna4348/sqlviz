@@ -7,7 +7,7 @@ name = "sqlviz"
 version = "0.0.1"
 description = "A Python library for SQL query visualization with interactive charts using Plotly"
 authors = [
-    {name = "Hill Patel, Raktim Kalita, Sai Krishna", email = "stiflerxd.ai@cudabit.live, raktimkalita@cudabit.live, eegasaikrishna@cudabit.live"}
+    {name = "Sai Krishna", email = "eegasaikrishna@cudabit.live"}
 ]
 readme = "README.md"
 license = {text = "MIT"}
