@@ -1,5 +1,6 @@
 import os
 import sys
+import tempfile
 from typing import TYPE_CHECKING
 
 import pytest
@@ -54,28 +55,38 @@ def test_invalid_chart(sv: SQLViz) -> None:
 
 
 def test_cli_function() -> None:
-    """Test the CLI helper function using a temporary SQLite file."""
+    """Test the CLI helper function using a temporary SQLite file (Windows-safe)."""
+    import os
     import tempfile
+    from sqlalchemy import create_engine
+    from sqlviz.core import visualize_sql_cli
+    from plotly.graph_objs import Figure
 
-    # Create a temporary SQLite file
-    with tempfile.NamedTemporaryFile(suffix=".db") as tmpfile:
-        db_uri = f"sqlite:///{tmpfile.name}"
+    # Create a temporary file instead of a directory
+    with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as tmpfile:
+        db_path = tmpfile.name
+
+    try:
+        db_uri = f"sqlite:///{db_path}"
 
         # Create table and insert data
-        from sqlalchemy import create_engine
-
         engine = create_engine(db_uri, future=True)
         with engine.begin() as conn:
             conn.exec_driver_sql("CREATE TABLE t (x INT, y INT)")
             conn.exec_driver_sql("INSERT INTO t(x, y) VALUES (1, 2), (3, 4)")
+        engine.dispose()  # release locks
 
-        # Run the CLI-friendly visualization
-        fig = visualize_sql_cli(
+        # Run the CLI helper
+        fig: Figure = visualize_sql_cli(
             db_uri=db_uri,
             sql="SELECT * FROM t",
             chart_type="bar",
             show=False,
             kwargs_str='{"x": "x", "y": "y"}',
         )
-
         assert fig is not None
+
+    finally:
+        # Manually delete the temp file
+        os.unlink(db_path)
+
