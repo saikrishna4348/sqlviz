@@ -58,9 +58,11 @@ def test_cli_function() -> None:
     """Test the CLI helper function using a temporary SQLite file (Windows-safe)."""
     import os
     import tempfile
-    from sqlalchemy import create_engine
-    from sqlviz.core import visualize_sql_cli
+
     from plotly.graph_objs import Figure
+    from sqlalchemy import create_engine
+
+    from sqlviz.core import visualize_sql_cli
 
     # Create a temporary file instead of a directory
     with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as tmpfile:
@@ -89,4 +91,3 @@ def test_cli_function() -> None:
     finally:
         # Manually delete the temp file
         os.unlink(db_path)
-
