@@ -1,8 +1,9 @@
+import json
 from typing import Optional, Union
+
 import pandas as pd
 import plotly.express as px
 from sqlalchemy import create_engine
-import json
 
 
 class SQLViz:

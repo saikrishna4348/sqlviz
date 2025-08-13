@@ -1,4 +1,5 @@
 import argparse
+
 from sqlviz.core import process_sql
 
 
