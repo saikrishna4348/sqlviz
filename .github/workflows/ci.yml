@@ -17,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'  # or '3.x' for any Python 3
+          python-version: '3.11'  # Match dev environment
 
       - name: Install dependencies
         run: |
@@ -29,14 +29,14 @@ jobs:
           black --check sqlviz tests
           isort --check sqlviz tests
 
-      - name: Type check with mypy
+      - name: Type check with mypy (strict mode)
         run: |
-          mypy sqlviz
+          mypy sqlviz --strict --pretty
 
       - name: Run tests with pytest
         run: |
-          pytest
+          pytest --maxfail=1 --disable-warnings -q
 
       - name: Smoke test CLI
         run: |
-          sqlviz --help
+          python -m sqlviz.cli --help
