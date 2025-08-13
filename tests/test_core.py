@@ -50,6 +50,7 @@ def test_cli_function():
     """Test the CLI helper function."""
     db_uri = "sqlite:///:memory:"
     from sqlalchemy import create_engine
+
     engine = create_engine(db_uri, future=True)
     with engine.begin() as conn:
         conn.exec_driver_sql("CREATE TABLE t (x INT, y INT)")
@@ -60,6 +61,6 @@ def test_cli_function():
         sql="SELECT * FROM t",
         chart_type="bar",
         show=False,
-        kwargs_str='{"x": "x", "y": "y"}'
+        kwargs_str='{"x": "x", "y": "y"}',
     )
     assert fig is not None
