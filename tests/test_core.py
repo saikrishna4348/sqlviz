@@ -54,18 +54,28 @@ def test_invalid_chart(sv: SQLViz) -> None:
 
 
 def test_cli_function() -> None:
-    """Test the CLI helper function."""
-    db_uri = "sqlite:///:memory:"
-    engine = create_engine(db_uri, future=True)
-    with engine.begin() as conn:
-        conn.exec_driver_sql("CREATE TABLE t (x INT, y INT)")
-        conn.exec_driver_sql("INSERT INTO t(x, y) VALUES (1, 2), (3, 4)")
+    """Test the CLI helper function using a temporary SQLite file."""
+    import tempfile
 
-    fig: "Figure" = visualize_sql_cli(
-        db_uri=db_uri,
-        sql="SELECT * FROM t",
-        chart_type="bar",
-        show=False,
-        kwargs_str='{"x": "x", "y": "y"}',
-    )
-    assert fig is not None
+    # Create a temporary SQLite file
+    with tempfile.NamedTemporaryFile(suffix=".db") as tmpfile:
+        db_uri = f"sqlite:///{tmpfile.name}"
+
+        # Create table and insert data
+        from sqlalchemy import create_engine
+
+        engine = create_engine(db_uri, future=True)
+        with engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE t (x INT, y INT)")
+            conn.exec_driver_sql("INSERT INTO t(x, y) VALUES (1, 2), (3, 4)")
+
+        # Run the CLI-friendly visualization
+        fig = visualize_sql_cli(
+            db_uri=db_uri,
+            sql="SELECT * FROM t",
+            chart_type="bar",
+            show=False,
+            kwargs_str='{"x": "x", "y": "y"}',
+        )
+
+        assert fig is not None
