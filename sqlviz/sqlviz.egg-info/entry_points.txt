@@ -1,0 +1,2 @@
+[console_scripts]
+sqlviz = sqlviz.cli:main

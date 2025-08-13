@@ -29,7 +29,8 @@ requires-python = ">=3.8"
 dependencies = [
     "pandas>=1.0",
     "sqlalchemy>=1.4",
-    "plotly>=5.0"
+    "plotly>=5.0",
+    "click>=8.0"
 ]
 
 [tool.mypy]
@@ -50,3 +51,6 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["sqlviz"]
+
+[project.scripts]
+sqlviz = "sqlviz.cli:main"

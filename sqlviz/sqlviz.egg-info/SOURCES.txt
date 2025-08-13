@@ -3,6 +3,7 @@ pyproject.toml
 sqlviz/sqlviz.egg-info/PKG-INFO
 sqlviz/sqlviz.egg-info/SOURCES.txt
 sqlviz/sqlviz.egg-info/dependency_links.txt
+sqlviz/sqlviz.egg-info/entry_points.txt
 sqlviz/sqlviz.egg-info/requires.txt
 sqlviz/sqlviz.egg-info/top_level.txt
 tests/test_core.py

@@ -1,9 +1,10 @@
-pandas
-sqlalchemy
-plotly
+pandas>=1.0
+sqlalchemy>=1.4
+plotly>=5.0
+click>=8.0
 
 [dev]
-pytest
-black
-isort
-mypy
+pytest>=8.0
+black>=24.3
+isort>=5.10
+mypy>=1.0
