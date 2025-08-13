@@ -9,10 +9,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Visualize SQL queries as diagrams or execution plans."
     )
-    parser.add_argument(
-        "sql_source",
-        help="Path to the SQL file or direct SQL string."
-    )
+    parser.add_argument("sql_source", help="Path to the SQL file or direct SQL string.")
     parser.add_argument(
         "-o",
         "--output",

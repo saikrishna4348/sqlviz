@@ -14,7 +14,7 @@ Usage (CLI):
 sqlviz --sql "SELECT * FROM my_table" --db sqlite:///mydb.db --chart bar --output result.png --format png
 """
 
-from .core import SQLViz, visualize_sql_cli, process_sql
+from .core import SQLViz, process_sql, visualize_sql_cli
 
 __all__ = ["SQLViz", "visualize_sql_cli", "process_sql"]
 

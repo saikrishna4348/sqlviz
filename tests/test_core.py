@@ -31,7 +31,9 @@ def test_query(sv: SQLViz) -> None:
 
 
 def test_visualize_bar_with_xy(sv: SQLViz) -> None:
-    fig: "Figure" = sv.visualize("SELECT * FROM t", chart_type="bar", x="x", y="y", show=False)
+    fig: "Figure" = sv.visualize(
+        "SELECT * FROM t", chart_type="bar", x="x", y="y", show=False
+    )
     assert fig is not None
 
 
